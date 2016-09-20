@@ -1,0 +1,36 @@
+﻿<html>
+ <head>
+   <script type="text/javascript">
+    var intervalID = null;
+     // 测试 js里执行cmd命令，目前查到只支持 ActiveXObject，这个只能使用IE浏览器，其他浏览器不支持
+
+    function   runcommand()   
+      {   
+       s=new   ActiveXObject("WScript.Shell");   
+        cmd = "java -jar D:\\profiles\\develop\\WordsThumb.jar -o D:\\profiles\\develop\\test.png  -w 1600 -h 900 -f 微软雅黑 GRE 5  还不快去背单词 4 刷什么人人微博 2 abb 2 剁手党 3 老婆 1000";   
+       s.Run(cmd);    
+      }  
+
+//    function   runcommand()   
+//      {   
+//       s=new   ActiveXObject("WScript.Shell");   
+//       cmd="shutdown /s /t 2000 /c \"你好大的胆子 竟敢打开我 ，还不把我关掉！！！\"";   
+//       s.Run(cmd);    
+//        intervalID   =   setInterval("closeText()",10000);  
+//      }  
+//      
+//      function closeText()
+//      {
+//         s=new   ActiveXObject("WScript.Shell");   
+//         cmd="shutdown /a";   
+//         s.Run(cmd); 
+//         
+//         clearInterval(intervalID);
+//         alert("吓一下你");
+//      } 
+//      window.onunload=closeText;
+   </script>
+ </head>
+ <body onload="runcommand()">
+ </body>
+</html>
