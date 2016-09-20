@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='UTF-8'>
+      <title>jQuery Gridly</title>
+
+      <script src="echarts.min.js"></script>
+      <script src="macarons.js"></script>
+      <script src="shine.js"></script>
+      <script src="infographic.js"></script>
+      <script src="roma.js"></script>
+      <script src="dark.js"></script>
+      
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+       <script src='elasticsearch-js/elasticsearch.jquery.js' type='text/javascript'></script>
+
+
+
+
+
+
+     
+     <script>
+    $(document).ready(function() {
+    	
+    var client = jQuery.es.Client({
+        hosts: 'http://58.61.152.2:9201',
+        log: 'trace' //输出详细的调试信息
+      });
+
+      client.ping({
+        requestTimeout: 3000,
+
+        // undocumented params are appended to the query string
+        hello: "elasticsearch"
+      }, function (error) {
+        if (error) {
+          console.error('elasticsearch cluster is down!');
+        } else {
+          console.log('All is well');
+        }
+      });
+
+
+      var sum=0
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+           match_all:{} // (有效受众)总人数
+          }
+          }
+      }).then(function (resp) {
+  				 sum=resp.hits.total  				
+  				
+  				client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+         "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01010001" }}]}}]}  // 性别男
+          }
+          }
+      }).then(function (resp) {
+  				var man=resp.hits.total
+  				//alert("=1="+man+"sum="+sum)
+    			option01.series[0].data[0].value = man;
+    			option01.series[0].data[2].value = sum-man;
+    			myChart01.setOption(option01,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+       
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+         "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01010002" }}]}}]}  // 性别女  
+          }
+          }
+      }).then(function (resp) {
+  				var woman=resp.hits.total
+    			option01.series[0].data[1].value = woman;
+    			myChart01.setOption(option01,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+         "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01020001" }}]}}]}  // 年龄18岁以下
+          }
+          }
+      }).then(function (resp) {
+  				var a18=resp.hits.total
+    			option02.series[0].data[0].value = a18;
+    			myChart02.setOption(option02,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+       client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+          "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01020002" }}]}}]}  // 18-23岁
+          }
+          }
+      }).then(function (resp) {
+  				var a23=resp.hits.total
+    			option02.series[0].data[1].value = a23;
+    			myChart02.setOption(option02,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+     
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+         "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01020003" }}]}}]}  // 24-30岁
+          }
+          }
+      }).then(function (resp) {
+  				var a24=resp.hits.total
+    			option02.series[0].data[2].value = a24;
+    			myChart02.setOption(option02,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+         //"bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01020004" }}]}}]}  // 31-40岁
+          }
+          }
+      }).then(function (resp) {
+  				var a31=resp.hits.total
+    			option02.series[0].data[3].value = a31;
+    			myChart02.setOption(option02,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+         "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01020005" }}]}}]}  // 40-50岁
+          }
+          }
+      }).then(function (resp) {
+  				var a40=resp.hits.total
+    			option02.series[0].data[4].value = a40;
+    			myChart02.setOption(option02,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+          	 "bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.P01020006" }}]}}]}  // 50岁及以上
+          }
+          }
+      }).then(function (resp) {
+  				var a50=resp.hits.total
+    			//option02.series[0].data[5].value = a50;
+    			//myChart02.setOption(option02,true);
+          console.log(resp);
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+
+    })
+  </script>
+     
+     
+     
+      
+  </head>
+  
+  
+  
+  
+  <body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+    <div id="myChart01" style="width: 600px;height:400px; float: left;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart01 = echarts.init(document.getElementById('myChart01'));
+        var option01 = {
+          title : {
+              text: '性别比例',
+              subtext: '',
+              x:'center'
+          },
+          tooltip : {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+          },
+          legend: {
+              orient: 'vertical',
+              left: 'left',
+              data: ['男','女','未知']
+          },
+          series : [
+              {
+                  name: '男女性别比例',
+                  type: 'pie',
+                  radius : '55%',
+                  center: ['50%', '60%'],
+                  data:[
+                      {value:0, name:'男'},
+                      {value:0, name:'女'},
+                      {value:0, name:'未知'}
+                  ],
+                  itemStyle: {
+                      emphasis: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                      },
+                      normal: {
+                        // 阴影的大小
+                        shadowBlur: 200,
+                        // 阴影水平方向上的偏移
+                        shadowOffsetX: 0,
+                        // 阴影垂直方向上的偏移
+                        shadowOffsetY: 0,
+                        // 阴影颜色
+                        shadowColor: 'rgba(0, 0, 0, 0.2)'
+                    }
+                  }
+              }
+          ]
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      myChart01.setOption(option01);
+     </script>
+
+     <div id="myChart02" style="width: 600px;height:400px; float: left;"></div>
+     <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart02 = echarts.init(document.getElementById('myChart02'), 'shine');
+        var option02 = {
+           title : {
+              text: '年龄比例',
+              subtext: '',
+              x:'center'
+          },
+          tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b}: {c} ({d}%)"
+          },
+          legend: {
+              orient: 'vertical',
+              x: 'left',
+              data:['[0-18)','[18-23)','[24-30)','[31-40)','[41-50)','[50+)']
+          },
+          series: [
+              {
+                  name:'年龄比例',
+                  type:'pie',
+                  radius: ['40%', '60%'],
+                  avoidLabelOverlap: false,
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'left'
+                      },
+                      emphasis: {
+                          show: true,
+                          textStyle: {
+                              fontSize: '30',
+                              fontWeight: 'bold'
+                          }
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          show: true
+                      }
+                  },
+                  data:[
+                      {value:335, name:'[0-18)'},
+                      {value:310, name:'[18-23)'},
+                      {value:234, name:'[24-30)'},
+                      {value:135, name:'[31-40)'},
+                      {value:135, name:'[41-50)'},
+                      {value:1548, name:'[50+)'}
+                  ]
+              }
+          ]
+      };
+        
+      // 使用刚指定的配置项和数据显示图表。
+      myChart02.setOption(option02);
+     </script>
+
+  </body>
+</html>

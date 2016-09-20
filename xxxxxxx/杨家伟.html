@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+
+<!-- jQuery / jQuery UI -->
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="http://libs.baidu.com/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <!-- jQuery Touch Punch - Enable Touch Drag and Drop -->
+  <script src="core/vendor/jquery.touch-punch.min.js"></script>
+
+
+
+  <script src="echarts.min.js"></script>
+  <script src='elasticsearch-js/elasticsearch.jquery.js' type='text/javascript'></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <link rel="stylesheet" href="css/metro.css" />
+  
+  
+  
+      <script src="echarts.min.js"></script>
+    <script src="china.js"></script>
+    <script src="macarons.js"></script>
+      <script src="shine.js"></script>
+      <script src="infographic.js"></script>
+      <script src="roma.js"></script>
+      <script src="dark.js"></script>
+        <!-- jQuery.Shapeshift -->
+  <script src="core/jquery.shapeshift.js"></script>
+  <script>
+  	var JSON_DATA=[
+      {
+         'text' : 'UU',
+         'state' : {
+           'opened' : true,'selected' : false
+         },
+         'children' : [
+           { 'text' : 'UU05' ,
+             'metadata' : { id : 'UU05' }
+           },
+           { 'text' : 'UU06' ,
+             'metadata' : { id : 'UU06' }
+           },
+           { 'text' : 'UU07' ,
+             'metadata' : { id : 'UU07' }
+           },
+           { 'text' : 'UU08' ,
+             'metadata' : { id : 'UU08' }
+           },
+           { 'text' : 'UU09' ,
+             'metadata' : { id : 'UU09' }
+           },
+           { 'text' : 'UU10' ,
+             'metadata' : { id : 'UU10' }
+           },
+           { 'text' : 'UU11' ,
+             'metadata' : { id : 'UU11' }
+           },
+           { 'text' : 'UU12' ,
+             'metadata' : { id : 'UU12' }
+           },
+           { 'text' : 'UU13' ,
+             'metadata' : { id : 'UU13' }
+           },
+           { 'text' : 'UU14' ,
+             'metadata' : { id : 'UU14' }
+           },
+           { 'text' : 'UU15' ,
+             'metadata' : { id : 'UU15' }
+           }
+         ]
+      },
+      {
+         'text' : '人口属性',
+         'children' : [
+           { 'text' : '性别' ,
+            'children' :[
+              { 'text' : '男' ,
+                'metadata' : { id : 'P01010001' }
+              },
+              { 'text' : '女' ,
+              'metadata' : { id : 'P01010002' }
+             }]
+            },
+            { 'text' : '年龄' ,
+              'children' :[
+              { 'text' : '18岁以下' ,
+              'metadata' : { id : 'P01020001' }
+              },
+              { 'text' : '18-23岁' ,
+              'metadata' : { id : 'P01020002' }
+              },
+              { 'text' : '24-30岁' ,
+              'metadata' : { id : 'P01020003' }
+              },
+              { 'text' : '31-40岁' ,
+              'metadata' : { id : 'P01020004' }
+              },
+              { 'text' : '40-50岁' ,
+              'metadata' : { id : 'P01020005' }
+              },
+              { 'text' : '50岁以上' ,
+              'metadata' : { id : 'P01020006' }
+              }
+             ]
+            },
+            { 'text' : '收入' ,
+              'children' :[
+              { 'text' : '2000元以下' ,
+              'metadata' : { id : 'P01030001' }
+              },
+              { 'text' : '2000-5000元' ,
+              'metadata' : { id : 'P01030002' }
+              },
+              { 'text' : '5001-8000元' ,
+              'metadata' : { id : 'P01030003' }
+              },
+              { 'text' : '8001-15000元' ,
+              'metadata' : { id : 'P01030004' }
+              },
+              { 'text' : '15000元以上' ,
+              'metadata' : { id : 'P01030005' }
+              }
+             ]
+            }
+         ]
+      },
+      {
+         'text' : '上网行为',
+         'children' : [
+           { 'text' : '使用时间段' ,
+              'children' :[
+              { 'text' : '上班高峰' ,
+              'metadata' : { id : 'N00010001' }
+              },
+              { 'text' : '上班时间' ,
+              'metadata' : { id : 'N00010002' }
+              },
+              { 'text' : '午休' ,
+              'metadata' : { id : 'N00010003' }
+              },
+              { 'text' : '下班高峰' ,
+              'metadata' : { id : 'N00010004' }
+              },
+              { 'text' : '夜晚休闲' ,
+              'metadata' : { id : 'N00010005' }
+              },
+              { 'text' : '夜猫' ,
+              'metadata' : { id : 'N00010006' }
+              }
+             ]
+           },
+            { 'text' : '活跃度' ,
+              'children' :[
+              { 'text' : '极浅度' ,
+              'metadata' : { id : 'N00020001' }
+              },
+              { 'text' : '浅度' ,
+              'metadata' : { id : 'N00020002' }
+              },
+              { 'text' : '中度' ,
+              'metadata' : { id : 'N00020003' }
+              },
+              { 'text' : '深度' ,
+              'metadata' : { id : 'N00020004' }
+              },
+              { 'text' : '极重度' ,
+              'metadata' : { id : 'N00020003' }
+              }
+             ]
+           },
+           { 'text' : '联网方式' ,
+              'children' :[
+              { 'text' : 'wifi' ,
+              'metadata' : { id : 'N00030001' }
+              },
+              { 'text' : '4G' ,
+              'metadata' : { id : 'N00030002' }
+              },
+              { 'text' : '3G' ,
+              'metadata' : { id : 'N00030003' }
+              },
+              { 'text' : '2G' ,
+              'metadata' : { id : 'N00030004' }
+              },
+              { 'text' : '其他' ,
+              'metadata' : { id : 'N00030005' }
+              }
+             ]
+           },
+           { 'text' : '运营商' ,
+              'children' :[
+              { 'text' : '移动' ,
+              'metadata' : { id : 'N00040001' }
+              },
+              { 'text' : '联通' ,
+              'metadata' : { id : 'N00040002' }
+              },
+              { 'text' : '电信' ,
+              'metadata' : { id : 'N00040003' }
+              }
+             ]
+           }
+         ]
+      }
+      ];
+  	$(document).ready(function(){
+	
+		$('#jstree_demo_div').jstree({
+			'core' : { 'data' : JSON_DATA },
+			"plugins" : [ "themes", "json_data", "ui" ]
+      	}).bind("select_node.jstree", function (e, data) {
+        	var texts = data.node.original.text
+        	var context=data.node.original.metadata.id
+      		//  alert("12="+texts+'-'+context)
+        	console.log(e)
+        	console.log(data); // 使用开发者工具来查看data的具体格式
+        	$("#cdtions").append('<div class="operator" title="双击删除">'+texts+':'+context+'\t</div>');
+
+        	$(".container").shapeshift(); // 解决新添加的div位置
+        	$(".operator").bind('dblclick',function(){
+          		this.remove();
+          		$(".container").shapeshift();
+        	});
+                
+		});
+		
+		$(".container").shapeshift();
+
+		$(".button.cycle-button").bind('click',function(event){
+			$("#cdtions").append('<div class="operator" style="background: rgb(123,114,233);" title="双击删除">'+$(event.target).text()+'\t</div>');
+			$(".container").shapeshift();
+			$(".operator").bind('dblclick',function(){
+				this.remove();
+				$(".container").shapeshift();
+			});
+		});
+	  
+	});
+  </script>
+
+
+</head>
+
+<body>
+<table width="100%" height="294" border="1">
+  <tr>
+    <td colspan="2">
+    	<div class="container" id='cdtions'></div>
+
+    	<div align="center">
+          <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >AND</button>&nbsp;
+          <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >OR</button>&nbsp;
+         <!-- <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >NOT</button>&nbsp;
+         -->
+          <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >(</button>&nbsp;
+          <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >)</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button id='sbmt' class="button primary">提交</button>
+    	</div>
+    </td>
+  </tr>
+  <tr>
+    <td width="211" rowspan="7">&nbsp;<div style="width:200px;" id="jstree_demo_div"></div></td>
+    <td width="971">&nbsp;123123</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>
