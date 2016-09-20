@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>tagIndex.html</title>
+<style type="text/css">
+html,body{ margin:0px; height:100%; }
+
+#banner {font-size:25px;
+	background-color:#438EB9;  /* #2086bf */
+	text-align:center;
+	padding:5px 0px;
+	
+	}
+a{text-decoration:none;
+	margin:35px;
+	}	
+a:visited {color:black;text-decoration:none;} 
+a:link {color:black;text-decoration:none;} 
+
+</style>
+
+<script>
+function changeSrc(v)
+{
+		if(v==1){
+document.getElementById("myframe").src="queryTags.htm";
+}
+	if(v==2){
+document.getElementById("myframe").src="allTags.htm";
+}
+	if(v==3){
+document.getElementById("myframe").src="http://58.61.152.2:7070/kylin/login";
+}
+}
+</script>
+
+</head>
+
+<body>
+<div id="banner">
+<a href="#"  onclick="changeSrc(1)" title="基于es中tag索引数据">带条件的标签查询</a>
+<a href="#" onclick="changeSrc(2)">不带条件的标签查询</a>
+<a href="#" onclick="changeSrc(3)">kylin</a>
+</div>
+<div style="height:90%;">
+<iframe id="myframe" src="queryTags.htm" scrolling="auto" meborder="0"  style="border:0px;height:100%;width:100%;" ></iframe>
+</div>
+<body>
+
+
+</html>

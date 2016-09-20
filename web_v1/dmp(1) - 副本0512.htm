@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <title>Basic Demo</title>
+
+
+
+  <!-- jQuery / jQuery UI -->
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="http://libs.baidu.com/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <!-- jQuery Touch Punch - Enable Touch Drag and Drop -->
+  <script src="core/vendor/jquery.touch-punch.min.js"></script>
+  <!-- jQuery.Shapeshift -->
+  <script src="core/jquery.shapeshift.js"></script>
+
+
+  <script src="echarts.min.js"></script>
+  <script src='elasticsearch-js/elasticsearch.jquery.js' type='text/javascript'></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+ <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+  <link rel="stylesheet" href="css/metro.css" />
+  
+  
+
+  <!-- CSS -->
+  <style>
+    .body_css {
+      font-size: 13px;
+    }
+    .container {
+      border: 1px dashed #CCC;
+      position: relative; 
+    }
+
+    .container > div {
+      background: rgb(27,154,247);
+      color: rgb(255,255,255);
+      position: absolute;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      width: 100px;
+    }
+
+
+    .container > .ss-placeholder-child {
+      background: transparent;
+      border: 1px dashed blue;
+      height: 20px;
+    }
+
+  </style>
+
+
+
+  <!-- Javascript -->
+  <script>
+  var JSON_DATA=[
+      {
+         'text' : 'UU',
+         'state' : {
+           'opened' : true,'selected' : false
+         },
+         'children' : [
+           { 'text' : 'UU05' ,
+             'metadata' : { id : 'UU05' }
+           },
+           { 'text' : 'UU06' ,
+             'metadata' : { id : 'UU06' }
+           },
+           { 'text' : 'UU07' ,
+             'metadata' : { id : 'UU07' }
+           },
+           { 'text' : 'UU08' ,
+             'metadata' : { id : 'UU08' }
+           },
+           { 'text' : 'UU09' ,
+             'metadata' : { id : 'UU09' }
+           },
+           { 'text' : 'UU10' ,
+             'metadata' : { id : 'UU10' }
+           },
+           { 'text' : 'UU11' ,
+             'metadata' : { id : 'UU11' }
+           },
+           { 'text' : 'UU12' ,
+             'metadata' : { id : 'UU12' }
+           },
+           { 'text' : 'UU13' ,
+             'metadata' : { id : 'UU13' }
+           },
+           { 'text' : 'UU14' ,
+             'metadata' : { id : 'UU14' }
+           },
+           { 'text' : 'UU15' ,
+             'metadata' : { id : 'UU15' }
+           }
+         ]
+      },
+      {
+         'text' : '人口属性',
+         'children' : [
+           { 'text' : '性别' ,
+            'children' :[
+              { 'text' : '男' ,
+                'metadata' : { id : 'P01010001' }
+              },
+              { 'text' : '女' ,
+              'metadata' : { id : 'P01010002' }
+             }]
+            },
+            { 'text' : '年龄' ,
+              'children' :[
+              { 'text' : '18岁以下' ,
+              'metadata' : { id : 'P01020001' }
+              },
+              { 'text' : '18-23岁' ,
+              'metadata' : { id : 'P01020002' }
+              },
+              { 'text' : '24-30岁' ,
+              'metadata' : { id : 'P01020003' }
+              },
+              { 'text' : '31-40岁' ,
+              'metadata' : { id : 'P01020004' }
+              },
+              { 'text' : '40-50岁' ,
+              'metadata' : { id : 'P01020005' }
+              },
+              { 'text' : '50岁以上' ,
+              'metadata' : { id : 'P01020006' }
+              }
+             ]
+            },
+            { 'text' : '收入' ,
+              'children' :[
+              { 'text' : '2000元以下' ,
+              'metadata' : { id : 'P01030001' }
+              },
+              { 'text' : '2000-5000元' ,
+              'metadata' : { id : 'P01030002' }
+              },
+              { 'text' : '5001-8000元' ,
+              'metadata' : { id : 'P01030003' }
+              },
+              { 'text' : '8001-15000元' ,
+              'metadata' : { id : 'P01030004' }
+              },
+              { 'text' : '15000元以上' ,
+              'metadata' : { id : 'P01030005' }
+              }
+             ]
+            }
+         ]
+      },
+      {
+         'text' : '上网行为',
+         'children' : [
+           { 'text' : '使用时间段' ,
+              'children' :[
+              { 'text' : '上班高峰' ,
+              'metadata' : { id : 'N00010001' }
+              },
+              { 'text' : '上班时间' ,
+              'metadata' : { id : 'N00010002' }
+              },
+              { 'text' : '午休' ,
+              'metadata' : { id : 'N00010003' }
+              },
+              { 'text' : '下班高峰' ,
+              'metadata' : { id : 'N00010004' }
+              },
+              { 'text' : '夜晚休闲' ,
+              'metadata' : { id : 'N00010005' }
+              },
+              { 'text' : '夜猫' ,
+              'metadata' : { id : 'N00010006' }
+              }
+             ]
+           },
+            { 'text' : '活跃度' ,
+              'children' :[
+              { 'text' : '极浅度' ,
+              'metadata' : { id : 'N00020001' }
+              },
+              { 'text' : '浅度' ,
+              'metadata' : { id : 'N00020002' }
+              },
+              { 'text' : '中度' ,
+              'metadata' : { id : 'N00020003' }
+              },
+              { 'text' : '深度' ,
+              'metadata' : { id : 'N00020004' }
+              },
+              { 'text' : '极重度' ,
+              'metadata' : { id : 'N00020003' }
+              }
+             ]
+           },
+           { 'text' : '联网方式' ,
+              'children' :[
+              { 'text' : 'wifi' ,
+              'metadata' : { id : 'N00030001' }
+              },
+              { 'text' : '4G' ,
+              'metadata' : { id : 'N00030002' }
+              },
+              { 'text' : '3G' ,
+              'metadata' : { id : 'N00030003' }
+              },
+              { 'text' : '2G' ,
+              'metadata' : { id : 'N00030004' }
+              },
+              { 'text' : '其他' ,
+              'metadata' : { id : 'N00030005' }
+              }
+             ]
+           },
+           { 'text' : '运营商' ,
+              'children' :[
+              { 'text' : '移动' ,
+              'metadata' : { id : 'N00040001' }
+              },
+              { 'text' : '联通' ,
+              'metadata' : { id : 'N00040002' }
+              },
+              { 'text' : '电信' ,
+              'metadata' : { id : 'N00040003' }
+              }
+             ]
+           }
+         ]
+      }
+      ]
+
+    $(document).ready(function() {
+
+      
+
+$('#jstree_demo_div').jstree({ 'core' : { // 'data' : JSON_DATA 
+    'data' : JSON_DATA 
+}
+,"plugins" : [ "themes", "json_data", "ui" ]
+      }).bind("select_node.jstree", function (e, data) { 
+
+        //alert(data.rslt.obj.data("text"));
+        //alert(data.rslt.obj.attr("id")); // 
+        // addElementDiv("first");
+        
+        var texts = data.node.original.text
+        var context=data.node.original.metadata.id
+      //  alert("12="+texts+'-'+context)
+        console.log(e)
+        console.log(data); // 使用开发者工具来查看data的具体格式
+        $("#cdtions").append('<div class="operator" title="双击删除">'+texts+':'+context+'\t</div>');
+
+        $(".container").shapeshift(); // 解决新添加的div位置
+        $(".operator").bind('dblclick',function(){
+          this.remove();
+          $(".container").shapeshift();
+        });
+                
+      });
+
+      $(".container").shapeshift();
+
+      $(".button.cycle-button").bind('click',function(event){
+        $("#cdtions").append('<div class="operator" style="background: rgb(123,114,233);" title="双击删除">'+$(event.target).text()+'\t</div>');
+        $(".container").shapeshift();
+        $(".operator").bind('dblclick',function(){
+          this.remove();
+          $(".container").shapeshift();
+      });
+      });
+
+      
+
+      $("#sbmt").bind('click',function(){
+        // alert($("#cdtions").text());
+        var context= $("#cdtions").text();
+        // 去除前面的空格/特殊字符
+        // alert(context);
+        var arr=context.replace(/^(\s|\u00A0)+/,'').replace(/(\s|\u00A0)+$/,'').split('\t')  // eg: UU05 and UU03 and ( p0101 or N0204 )
+        alert("c="+arr)
+        //alert("c1="+arr.length)
+        //alert("c2="+arr.split('##'))
+        
+        // alert($("#para1").html());
+        
+        if(arr.length<=1 && arr[0]==''){
+          alert("invalid select!")
+          return 
+          }
+          
+
+ // var TAG=new StringBuffer();
+  var TAG=""  
+  var isFirst= false  
+  var isOR = false
+  var isOver = false
+        for (var i=0;i<arr.length;i++){
+          var val=arr[i].replace(/(.)+:/,'') 
+            //alert(val+"--==and:"+(val=='and')+",==or:"+(val=='or'))
+        if(val=='and' || val=='or'){
+          continue;
+          }
+        
+  /// alert(val+","+'tag.'+val+",a"+val.replace('',''))
+  if(i == 0){
+    if (val.indexOf('(')>=0){
+      isOR = true
+      isFirst =true
+    }else{
+      
+       TAG = '{"bool":{"should":[{"exists":{"field" : "tags.'+val+'"}}]}}'   //string
+      // TAG = {"bool":{"should":[{"exists":{"field" : "tags."+val}}]}} // obj      
+      //var jsonTag = eval('(' + TAG + ')');
+      
+      // alert("this:"+TAG+",jsonTag="+jsonTag)
+    } 
+  }else{
+
+ //alert("i="+i+",val="+val+",isor="+isOR+",tag="+TAG+",test(="+val.indexOf('('))
+    if (val.indexOf('(')>=0){
+      isOR = true
+      isFirst = true
+    }else if(val.indexOf(')')>=0){
+      isOR = false
+      TAG = TAG +"]}}"
+     // alert("i="+i+",val="+val+",isor="+isOR+",isFirst="+isFirst+",tag="+TAG)
+    }else if(isOR){
+      if(isFirst){
+        TAG = TAG + "," + '{"bool":{"should":[' + '{"exists":{"field" : "tags.'+ val+'"}}'
+        isFirst=false
+      }else{
+      //  alert("i="+i+",val="+val+",isor="+isOR+",isFirst="+isFirst+",tag="+TAG)
+        TAG = TAG + "," +'{"exists":{"field" : "tags.'+ val +'"}}'
+      }
+    }else{
+      TAG = TAG +","+ '{"bool":{"should":[{"exists":{"field" : "tags.'+ val +'"}}]}}'
+      
+     // jsonTag = jsonTag + ""
+     // TAG = TAG +","+ {"bool":{"should":[{"exists":{"field" : "tags."+ val}}]}}
+      console.log(TAG)
+    } 
+   }        
+   }
+   
+   var jsonTag = eval('(' + TAG + ')');
+   alert("tag:"+TAG)
+   
+   console.log(TAG);
+   // var QUERYSQL = '"query":{"bool":{"must":['+TAG+']}}'
+   //var QUERYSQL = "query":{"bool":{"must:["+TAG]}}
+   
+   // alert(QUERYSQL)
+   
+   var UU="tags.UU11"
+        
+                // elasticsearch.jquery.js  版
+var client = new $.es.Client({
+        hosts: 'http://58.61.152.2:9201',
+        log: 'trace' //输出详细的调试信息
+      });
+
+      client.ping({
+        requestTimeout: 3000,
+
+        // undocumented params are appended to the query string
+        hello: "elasticsearch"
+      }, function (error) {
+        if (error) {
+          console.error('elasticsearch cluster is down!');
+        } else {
+          console.log('All is well');
+        }
+      });
+
+      client.search({
+        index: 'test2',
+        type: 'taglib',
+        body: {
+          query: {
+          filtered: {
+          filter: {
+          //QUERYSQL
+          query:{bool:{must:[ jsonTag ]}}
+         // query: {bool: {must:[{bool:{should:[{exists : { field : UU }}]}}]}}
+          }
+          }
+          }
+          ,"aggs":{"all_count":{"sum":{"field":"tags.UU05"}}}
+          }
+      }).then(function (resp) {
+          var value_count=resp.hits.total
+          var sum=resp.aggregations.all_count.value
+          //alert("value_count:"+value_count+"---sum="+sum)
+          //$('#results').html(JSON.stringify(value_count+'--'+sum))
+          
+          option.series[0].data[0].value = sum;
+          option.series[1].data[0].value = value_count;
+          myChart.setOption(option,true);
+          
+          console.log(resp);
+      }, function (err) {
+          //$('#results').html(JSON.stringify(err))
+          console.trace(err.message);
+      }); 
+        
+    });
+      
+    })
+  </script>
+</head>
+<body class="body_css">
+<table border="0" width="100%;">
+  <tr>
+    <td width="15%"><div id="jstree_demo_div"></div></td>
+    <td width="85%">
+    <div class="container" id='cdtions'></div>
+
+    <div align="center">
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >AND</button>&nbsp;
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >OR</button>&nbsp;
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >NOT</button>&nbsp;
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >(</button>&nbsp;
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >)</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button id='sbmt' class="button rounded" style="background: rgb(32,134,191); color: rgb(255,255,255);">提交</button>
+    </div>
+    </td>
+  </tr>
+</table>
+
+
+  
+
+  <!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 450px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        option = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series : [
+        {
+            name: '速度',
+            type: 'gauge',
+            z: 3,
+            min: 0,
+            max: 220,
+            splitNumber: 11,
+            radius: '50%',
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length: 15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0, name: 'sum'}]
+        },
+        {
+            name: '转速',
+            type: 'gauge',
+            center: ['20%', '55%'],    // 默认全局居中
+            radius: '35%',
+            min:0,
+            max:7,
+            endAngle:45,
+            splitNumber:7,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length:12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length:20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title: {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail: {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0, name: 'count'}]
+        },
+        {
+            name: '油表',
+            type: 'gauge',
+            center: ['77%', '50%'],    // 默认全局居中
+            radius: '25%',
+            min: 0,
+            max: 2,
+            startAngle: 135,
+            endAngle: 45,
+            splitNumber: 2,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 5,
+                length: 10,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            axisLabel: {
+                formatter:function(v){
+                    switch (v + '') {
+                        case '0' : return 'E';
+                        case '1' : return 'Gas';
+                        case '2' : return 'F';
+                    }
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:2
+            },
+            title : {
+                show: false
+            },
+            detail : {
+                show: false
+            },
+            data:[{value: 0.5, name: 'gas'}]
+        },
+        {
+            name: '水表',
+            type: 'gauge',
+            center : ['77%', '50%'],    // 默认全局居中
+            radius : '25%',
+            min: 0,
+            max: 2,
+            startAngle: 315,
+            endAngle: 225,
+            splitNumber: 2,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                show: false
+            },
+            axisLabel: {
+                formatter:function(v){
+                    switch (v + '') {
+                        case '0' : return 'H';
+                        case '1' : return 'Water';
+                        case '2' : return 'C';
+                    }
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:2
+            },
+            title: {
+                show: false
+            },
+            detail: {
+                show: false
+            },
+            data:[{value: 0.5, name: 'gas'}]
+        }
+    ]
+};
+
+  myChart.setOption(option,true);
+
+// $.ajax({
+//      url: "http://query.yahooapis.com/v1/public/yql",
+//      // jsonpCallback: "showPrice",
+//      jsonp: "callback",
+//      // tell jQuery we're expecting JSONP
+//      dataType: "jsonp",
+//      data: {
+//          q: "select title,abstract,url from search.news where query=\"cat\"",
+//          format: "json"
+//      },
+//      // work with the response
+//      success: function( data ) {
+//          console.log( data ); // server response
+//      }
+//  });
+
+
+
+
+// $.ajax({
+//   contentType: "application/json; charset=utf-8",
+//   type: 'get',
+//   url: 'http://58.61.152.2:9201/tag/taglib/_search?pretty',
+//   // data: {"query":{"bool":{"must":[{"bool":{"should":[{"exists" : { "field" : "tags.UU05" }}]}}]}}},
+//   data: {
+//       "query": {
+//       "filtered": {
+//       "filter": {
+//       "query": {"bool": {"must":[{"bool":{"should":[{"exists" : { "field" : "tags.UU11" }}]}}]}}
+//       }
+//       }
+//       }
+//       ,"aggs":{"all_count":{"value_count":{"field":"tags.UU05"}}}
+//       },
+//   dataType: 'jsonp',
+//   jsonp: 'callback',
+//   // jsonpCallback:"myJsonMethod",//成功回调的方法
+//   async: false,
+//   success: function(data){
+//     alert('adfas');
+//     console.log("data");
+//   }
+// });
+
+
+    function clkbtn(val){
+      alert('123123');
+      $("#cdtions").append('<div class="operator" title="双击删除">'+val+'\t</div>');
+      $(".container").shapeshift(); // 解决新添加的div位置
+    }
+    </script>
+</body>
+</html>

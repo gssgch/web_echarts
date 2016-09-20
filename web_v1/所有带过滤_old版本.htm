@@ -1,0 +1,1473 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+
+
+ <!-- jQuery / jQuery UI -->
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="http://libs.baidu.com/jqueryui/1.10.2/jquery-ui.min.js"></script>
+  <!-- jQuery Touch Punch - Enable Touch Drag and Drop -->
+  <script src="core/vendor/jquery.touch-punch.min.js"></script>
+
+
+
+  <script src="echarts.min.js"></script>
+  <script src='elasticsearch-js/elasticsearch.jquery.js' type='text/javascript'></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <link rel="stylesheet" href="css/metro.css" />
+  
+  
+  
+      <script src="echarts.min.js"></script>
+    <script src="china.js"></script>
+    <script src="macarons.js"></script>
+      <script src="shine.js"></script>
+      <script src="infographic.js"></script>
+      <script src="roma.js"></script>
+      <script src="dark.js"></script>
+        <!-- jQuery.Shapeshift -->
+  <script src="core/jquery.shapeshift.js"></script>
+  
+
+  <!-- CSS -->
+  <style>
+    .body_css {
+      font-size: 13px;
+    }
+    .container {
+      border: 1px dashed #CCC;
+      position: relative; 
+    }
+
+    .container > div {
+      background: rgb(27,154,247);
+      color: rgb(255,255,255);
+      position: absolute;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+      width: 100px;
+    }
+
+
+    .container > .ss-placeholder-child {
+      background: transparent;
+      border: 1px dashed blue;
+      height: 20px;
+    }
+
+  </style>
+
+
+
+  <!-- Javascript -->
+  <script>
+  var JSON_DATA=[
+      {
+         'text' : 'UU',
+         'state' : {
+           'opened' : true,'selected' : false
+         },
+         'children' : [
+           { 'text' : 'UU05' ,
+             'metadata' : { id : 'UU05' }
+           },
+           { 'text' : 'UU06' ,
+             'metadata' : { id : 'UU06' }
+           },
+           { 'text' : 'UU07' ,
+             'metadata' : { id : 'UU07' }
+           },
+           { 'text' : 'UU08' ,
+             'metadata' : { id : 'UU08' }
+           },
+           { 'text' : 'UU09' ,
+             'metadata' : { id : 'UU09' }
+           },
+           { 'text' : 'UU10' ,
+             'metadata' : { id : 'UU10' }
+           },
+           { 'text' : 'UU11' ,
+             'metadata' : { id : 'UU11' }
+           },
+           { 'text' : 'UU12' ,
+             'metadata' : { id : 'UU12' }
+           },
+           { 'text' : 'UU13' ,
+             'metadata' : { id : 'UU13' }
+           },
+           { 'text' : 'UU14' ,
+             'metadata' : { id : 'UU14' }
+           },
+           { 'text' : 'UU15' ,
+             'metadata' : { id : 'UU15' }
+           }
+         ]
+      },
+      {
+         'text' : '人口属性',
+         'children' : [
+           { 'text' : '性别' ,
+            'children' :[
+              { 'text' : '男' ,
+                'metadata' : { id : 'P01010001' }
+              },
+              { 'text' : '女' ,
+              'metadata' : { id : 'P01010002' }
+             }]
+            },
+            { 'text' : '年龄' ,
+              'children' :[
+              { 'text' : '18岁以下' ,
+              'metadata' : { id : 'P01020001' }
+              },
+              { 'text' : '18-23岁' ,
+              'metadata' : { id : 'P01020002' }
+              },
+              { 'text' : '24-30岁' ,
+              'metadata' : { id : 'P01020003' }
+              },
+              { 'text' : '31-40岁' ,
+              'metadata' : { id : 'P01020004' }
+              },
+              { 'text' : '40-50岁' ,
+              'metadata' : { id : 'P01020005' }
+              },
+              { 'text' : '50岁以上' ,
+              'metadata' : { id : 'P01020006' }
+              }
+             ]
+            },
+            { 'text' : '收入' ,
+              'children' :[
+              { 'text' : '2000元以下' ,
+              'metadata' : { id : 'P01030001' }
+              },
+              { 'text' : '2000-5000元' ,
+              'metadata' : { id : 'P01030002' }
+              },
+              { 'text' : '5001-8000元' ,
+              'metadata' : { id : 'P01030003' }
+              },
+              { 'text' : '8001-15000元' ,
+              'metadata' : { id : 'P01030004' }
+              },
+              { 'text' : '15000元以上' ,
+              'metadata' : { id : 'P01030005' }
+              }
+             ]
+            }
+         ]
+      },
+      {
+         'text' : '上网行为',
+         'children' : [
+           { 'text' : '使用时间段' ,
+              'children' :[
+              { 'text' : '上班高峰' ,
+              'metadata' : { id : 'N00010001' }
+              },
+              { 'text' : '上班时间' ,
+              'metadata' : { id : 'N00010002' }
+              },
+              { 'text' : '午休' ,
+              'metadata' : { id : 'N00010003' }
+              },
+              { 'text' : '下班高峰' ,
+              'metadata' : { id : 'N00010004' }
+              },
+              { 'text' : '夜晚休闲' ,
+              'metadata' : { id : 'N00010005' }
+              },
+              { 'text' : '夜猫' ,
+              'metadata' : { id : 'N00010006' }
+              }
+             ]
+           },
+            { 'text' : '活跃度' ,
+              'children' :[
+              { 'text' : '极浅度' ,
+              'metadata' : { id : 'N00020001' }
+              },
+              { 'text' : '浅度' ,
+              'metadata' : { id : 'N00020002' }
+              },
+              { 'text' : '中度' ,
+              'metadata' : { id : 'N00020003' }
+              },
+              { 'text' : '深度' ,
+              'metadata' : { id : 'N00020004' }
+              },
+              { 'text' : '极重度' ,
+              'metadata' : { id : 'N00020003' }
+              }
+             ]
+           },
+           { 'text' : '联网方式' ,
+              'children' :[
+              { 'text' : 'wifi' ,
+              'metadata' : { id : 'N00030001' }
+              },
+              { 'text' : '4G' ,
+              'metadata' : { id : 'N00030002' }
+              },
+              { 'text' : '3G' ,
+              'metadata' : { id : 'N00030003' }
+              },
+              { 'text' : '2G' ,
+              'metadata' : { id : 'N00030004' }
+              },
+              { 'text' : '其他' ,
+              'metadata' : { id : 'N00030005' }
+              }
+             ]
+           },
+           { 'text' : '运营商' ,
+              'children' :[
+              { 'text' : '移动' ,
+              'metadata' : { id : 'N00040001' }
+              },
+              { 'text' : '联通' ,
+              'metadata' : { id : 'N00040002' }
+              },
+              { 'text' : '电信' ,
+              'metadata' : { id : 'N00040003' }
+              }
+             ]
+           }
+         ]
+      }
+      ]
+
+    $(document).ready(function() {
+
+      
+
+$('#jstree_demo_div').jstree({ 'core' : { // 'data' : JSON_DATA 
+    'data' : JSON_DATA 
+}
+,"plugins" : [ "themes", "json_data", "ui" ]
+      }).bind("select_node.jstree", function (e, data) { 
+
+        
+        var texts = data.node.original.text
+        var context=data.node.original.metadata.id
+      //  alert("12="+texts+'-'+context)
+        console.log(e)
+        console.log(data); // 使用开发者工具来查看data的具体格式
+        $("#cdtions").append('<div class="operator" title="双击删除">'+texts+':'+context+'\t</div>');
+
+        $(".container").shapeshift(); // 解决新添加的div位置
+        $(".operator").bind('dblclick',function(){
+          this.remove();
+          $(".container").shapeshift();
+        });
+                
+      });
+
+      $(".container").shapeshift();
+
+      $(".button.cycle-button").bind('click',function(event){
+        $("#cdtions").append('<div class="operator" style="background: rgb(123,114,233);" title="双击删除">'+$(event.target).text()+'\t</div>');
+        $(".container").shapeshift();
+        $(".operator").bind('dblclick',function(){
+          this.remove();
+          $(".container").shapeshift();
+      });
+      });
+
+      
+
+      $("#sbmt").bind('click',function(){
+        // alert($("#cdtions").text());
+        var context= $("#cdtions").text();
+        // 去除前面的空格/特殊字符
+        // alert(context);
+        var arr=context.replace(/^(\s|\u00A0)+/,'').replace(/(\s|\u00A0)+$/,'').split('\t')  // eg: UU05 and UU03 and ( p0101 or N0204 )
+        
+        if(arr.length<=1 && arr[0]==''){
+          alert("invalid select!")
+          return 
+          }
+          
+
+ // var TAG=new StringBuffer();
+  var TAG=""  
+  var isFirst= false  
+  var isOR = false
+  var existAND = true
+        for (var i=0;i<arr.length;i++){
+          var val=arr[i].replace(/(.)+:/,'') 
+            //alert("val="+val+"--==and:"+(val=='and')+",==or:"+(val=='or'))
+        if(val=='and' || val=='AND'){
+        	existAND = true
+        	continue;
+        	}
+        
+        if(val=='OR' || val=='or'){
+          existAND = false
+          continue;
+          }
+        
+  /// alert(val+","+'tag.'+val+",a"+val.replace('',''))
+  if(i == 0){
+    if (val.indexOf('(')>=0){
+      isOR = true
+      isFirst =true
+    }else{
+       TAG = '{"bool":{"should":[{"exists":{"field" : "tags.'+val+'"}}]}}'   //string
+    } 
+  }else{
+
+    if (val.indexOf('(')>=0){
+      isOR = true
+      isFirst = true
+    }else if(val.indexOf(')')>=0){
+      isOR = false
+      existAND = true
+      TAG = TAG +"]}}"
+    }else if(isOR){
+      if(isFirst){
+      	if(TAG == ''){ // eg: ( UU11 or UU13 )
+      		TAG = '{"bool":{"should":[' + '{"exists":{"field" : "tags.'+ val+'"}}'
+      	}else{ // UU05 and ( UU11 or UU13 )
+          TAG = TAG + "," + '{"bool":{"should":[' + '{"exists":{"field" : "tags.'+ val+'"}}'
+        }
+       isFirst=false
+      }else{
+        TAG = TAG + "," +'{"exists":{"field" : "tags.'+ val +'"}}'
+      }
+    }else{
+    	if(existAND){
+        TAG = TAG +","+ '{"bool":{"should":[{"exists":{"field" : "tags.'+ val +'"}}]}}'
+      }else{ 
+      	if(i==2){ // UU11 or UU13
+      		TAG = '{"bool":{"should":[' + '{"exists":{"field" : "tags.'+ arr[0].replace(/(.)+:/,'')+'"}}'
+      		}
+      	TAG = TAG + "," +'{"exists":{"field" : "tags.'+ val +'"}}'
+      	if(i==(arr.length-1)){
+      	  	TAG = TAG +"]}}"
+      	}
+    	}
+    } 
+   }        
+   }
+   
+   var queryTag = '{"must":['+ TAG +' ]}'
+   var jsonTag = eval('(' + queryTag + ')');
+   console.log(jsonTag); 
+   var total=0
+          
+   // elasticsearch.jquery.js  版
+   var client = new $.es.Client({
+        hosts: 'http://58.61.152.2:9201',
+        log: 'trace' //输出详细的调试信息
+      });
+
+      client.ping({
+        requestTimeout: 3000,
+        // undocumented params are appended to the query string
+        hello: "elasticsearch"
+      }, function (error) {
+        if (error) {
+          console.error('elasticsearch cluster is down!');
+        } else {
+          console.log('All is well');
+        }
+      });
+
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+          filtered: {
+          filter: {
+          query:{bool:jsonTag}
+          }
+          }
+          }
+          ,"aggs":{"all_count":{"sum":{"field":"tags.UU05"}}}
+          }
+      }).then(function (resp) {
+          var value_count=resp.hits.total  // 人数
+          //alert(value_count)
+          var sum=resp.aggregations.all_count.value // 流量
+          
+		   client.search({
+						index: 'tag',
+						type: 'taglib',
+						body: {
+							query: {
+								filtered: {
+										query:{bool:jsonTag }
+										//,filter:{and:[{range:{"tags.UU05":{"gte":15}}}]} // 活跃用户
+										,filter:[{range:{"tags.UU05":{"gte":15}}}] // 活跃用户
+								}
+							}          
+						}
+		      }).then(function (resp2) {
+	  				var activeSum=resp2.hits.total
+	    		  optionboth.series[0].data[0].value = value_count;
+            optionboth.series[1].data[0].value = activeSum;
+
+	    			optionflow.series[0].data[0].value = sum;
+	    			chartboth.setOption(optionboth,true);
+	    			chartflow.setOption(optionflow,true);
+	    			 console.log(resp);
+	          console.log(resp2);
+		      }, function (err) {
+	          console.trace(err.message);
+		      });                 
+       // console.log(resp);
+      }, function (err) {
+          //$('#results').html(JSON.stringify(err))
+       console.trace(err.message);
+      }); 
+      
+       // '[0-18)','[18-23)','[24-30)','[31-40)','[41-50)','[50 + )','未知'
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+	          filtered: {
+		          filter: {
+		          	query:{bool:jsonTag} // 该批次查询的总人数
+		          }
+	          }
+          },"aggs":{
+						"male":{"stats":{"field":"tags.P01010001"}},
+						"female":{"stats":{"field":"tags.P01010002"}},
+						"a01":{"stats":{"field":"tags.P01020001"}},
+						"a18":{"stats":{"field":"tags.P01020002"}},
+						"a24":{"stats":{"field":"tags.P01020003"}},
+						"a31":{"stats":{"field":"tags.P01020004"}},
+						"a41":{"stats":{"field":"tags.P01020005"}},
+						"a50":{"stats":{"field":"tags.P01020006"}}
+						}
+        }
+      }).then(function (resp) {
+				var headCount=resp.hits.total
+				var male=resp.aggregations.male.count
+				var female=resp.aggregations.female.count
+        optionsex.series[0].data[0].value = male;
+			  optionsex.series[0].data[1].value = female;
+  			optionsex.series[0].data[2].value = headCount-male-female;
+  			chartsex.setOption(optionsex,true);   
+  			
+  			
+				var a01=resp.aggregations.a01.count
+				var a18=resp.aggregations.a18.count
+				var a24=resp.aggregations.a24.count
+				var a31=resp.aggregations.a31.count
+				var a41=resp.aggregations.a41.count
+				var a50=resp.aggregations.a50.count
+				
+				optionage.series[0].data[0].value = a01;
+				optionage.series[0].data[1].value = a18;
+				optionage.series[0].data[2].value = a24;
+				optionage.series[0].data[3].value = a31;
+				optionage.series[0].data[4].value = a41;
+				optionage.series[0].data[5].value = a50;
+				var unknownage =headCount-a01-a18-a31-a41-a50;
+				if(unknownage<=0){
+					unknownage=0;
+					}
+    		optionage.series[0].data[6].value = unknownage;
+    		chartage.setOption(optionage,true);  						
+        console.log(resp)
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      
+     
+     
+      
+      
+      
+      
+      
+      
+      /* 受众分布地图*/
+      client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+	          filtered: {
+		          filter: {
+		          	query:{bool:jsonTag} // 该批次查询的总人数
+		          }
+	          }
+          },"aggs":{
+						"a01":{"stats":{"field":"tags.SSP北京市"}},
+						"a02":{"stats":{"field":"tags.SSP天津市"}},
+						"a03":{"stats":{"field":"tags.SSP上海市"}},
+						"a04":{"stats":{"field":"tags.SSP重庆市"}},
+						"a05":{"stats":{"field":"tags.SSP河北省"}},
+						"a06":{"stats":{"field":"tags.SSP河南省"}},
+						"a07":{"stats":{"field":"tags.SSP云南省"}},
+						"a08":{"stats":{"field":"tags.SSP辽宁省"}},
+						"a09":{"stats":{"field":"tags.SSP黑龙江省"}},
+						"a10":{"stats":{"field":"tags.SSP湖南省"}},
+						"a11":{"stats":{"field":"tags.SSP安徽省"}},
+						"a12":{"stats":{"field":"tags.SSP山东省"}},
+						"a13":{"stats":{"field":"tags.SSP新疆维吾尔自治区"}},
+						"a14":{"stats":{"field":"tags.SSP江苏省"}},
+						"a15":{"stats":{"field":"tags.SSP浙江省"}},
+						"a16":{"stats":{"field":"tags.SSP江西省"}},
+						"a17":{"stats":{"field":"tags.SSP湖北省"}},
+						"a18":{"stats":{"field":"tags.SSP广西壮族自治区"}},
+						"a19":{"stats":{"field":"tags.SSP甘肃省"}},
+						"a20":{"stats":{"field":"tags.SSP山西省"}},
+						"a21":{"stats":{"field":"tags.SSP内蒙古自治区"}},
+						"a22":{"stats":{"field":"tags.SSP陕西省"}},
+						"a23":{"stats":{"field":"tags.SSP吉林省"}},
+						"a24":{"stats":{"field":"tags.SSP福建省"}},
+						"a25":{"stats":{"field":"tags.SSP贵州省"}},
+						"a26":{"stats":{"field":"tags.SSP广东省"}},
+						"a27":{"stats":{"field":"tags.SSP青海省"}},
+						"a28":{"stats":{"field":"tags.SSP西藏自治区"}},
+						"a29":{"stats":{"field":"tags.SSP四川省"}},
+						"a30":{"stats":{"field":"tags.SSP宁夏回族自治区"}},
+						"a31":{"stats":{"field":"tags.SSP海南省"}},
+						"a32":{"stats":{"field":"tags.SSP台湾"}},
+						"a33":{"stats":{"field":"tags.SSP香港"}},
+						"a34":{"stats":{"field":"tags.SSP澳门"}}
+						}
+        }
+      }).then(function (resp) {
+				var headCount=resp.hits.total
+				var a01=resp.aggregations.a01.count
+				var a02=resp.aggregations.a02.count
+				var a03=resp.aggregations.a03.count
+				var a04=resp.aggregations.a04.count
+				var a05=resp.aggregations.a05.count
+				var a06=resp.aggregations.a06.count
+				var a07=resp.aggregations.a07.count
+				var a08=resp.aggregations.a08.count
+				var a09=resp.aggregations.a09.count
+				var a10=resp.aggregations.a10.count
+				var a11=resp.aggregations.a11.count
+				var a12=resp.aggregations.a12.count
+				var a13=resp.aggregations.a13.count
+				var a14=resp.aggregations.a14.count
+				var a15=resp.aggregations.a15.count
+				var a16=resp.aggregations.a16.count
+				var a17=resp.aggregations.a17.count
+				var a18=resp.aggregations.a18.count
+				var a19=resp.aggregations.a19.count
+				var a20=resp.aggregations.a20.count
+				var a21=resp.aggregations.a21.count
+				var a22=resp.aggregations.a22.count
+				var a23=resp.aggregations.a23.count
+				var a24=resp.aggregations.a24.count
+				var a25=resp.aggregations.a25.count
+				var a26=resp.aggregations.a26.count
+				var a27=resp.aggregations.a27.count
+				var a28=resp.aggregations.a28.count
+				var a29=resp.aggregations.a29.count
+				var a30=resp.aggregations.a30.count
+				var a31=resp.aggregations.a31.count
+				var a32=resp.aggregations.a32.count
+				var a33=resp.aggregations.a33.count
+				var a34=resp.aggregations.a34.count				
+				
+				optionmap.series[0].data[0].value = a01		
+				optionmap.series[0].data[1].value = a02		
+				optionmap.series[0].data[2].value = a03		
+			  optionmap.series[0].data[3].value = a04	 
+			  optionmap.series[0].data[4].value = a05		
+			  optionmap.series[0].data[5].value = a06
+			  optionmap.series[0].data[6].value = a07		
+				optionmap.series[0].data[7].value = a08		
+				optionmap.series[0].data[8].value = a09		
+			  optionmap.series[0].data[9].value = a10	 
+			  optionmap.series[0].data[10].value = a11		
+			  optionmap.series[0].data[11].value = a12
+				optionmap.series[0].data[12].value = a13		
+			  optionmap.series[0].data[13].value = a14	 
+			  optionmap.series[0].data[14].value = a15		
+			  optionmap.series[0].data[15].value = a16
+			  optionmap.series[0].data[16].value = a17		
+				optionmap.series[0].data[17].value = a18		
+				optionmap.series[0].data[18].value = a19		
+			  optionmap.series[0].data[19].value = a20			  
+				optionmap.series[0].data[20].value = a21		
+				optionmap.series[0].data[21].value = a22		
+				optionmap.series[0].data[22].value = a23		
+			  optionmap.series[0].data[23].value = a24	 
+			  optionmap.series[0].data[24].value = a25		
+			  optionmap.series[0].data[25].value = a26
+			  optionmap.series[0].data[26].value = a27		
+				optionmap.series[0].data[27].value = a28		
+				optionmap.series[0].data[28].value = a29		
+			  optionmap.series[0].data[29].value = a30
+			  optionmap.series[0].data[30].value = a31				  
+				optionmap.series[0].data[31].value = a32		
+				optionmap.series[0].data[32].value = a33		
+			  optionmap.series[0].data[33].value = a34	 
+			  
+        function randomData() {
+           // return Math.round(Math.random()*1000);
+        }
+    		 
+    		chartmap.setOption(optionmap,true);  				
+        //console.log(resp)
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      
+       client.search({
+        index: 'tag',
+        type: 'taglib',
+        body: {
+          query: {
+	          filtered: {
+		          filter: {
+		          	query:{bool:jsonTag} // 该批次查询的总人数
+		          }
+	          }
+          },"aggs":{
+						"a01":{"stats":{"field":"tags.A01"}},
+						"a02":{"stats":{"field":"tags.A02"}},
+						"a03":{"stats":{"field":"tags.A03"}},
+						"a04":{"stats":{"field":"tags.A04"}},
+						"a05":{"stats":{"field":"tags.A05"}},
+						"a06":{"stats":{"field":"tags.A06"}},
+						"a07":{"stats":{"field":"tags.A07"}},
+						"a08":{"stats":{"field":"tags.A08"}},
+						"a09":{"stats":{"field":"tags.A09"}},
+						"a10":{"stats":{"field":"tags.A10"}},
+						"a11":{"stats":{"field":"tags.A11"}},
+						"a12":{"stats":{"field":"tags.A12"}},
+						"a13":{"stats":{"field":"tags.A13"}},
+						"a14":{"stats":{"field":"tags.A14"}},
+						"a15":{"stats":{"field":"tags.A15"}},
+						"a16":{"stats":{"field":"tags.A16"}},
+						"a17":{"stats":{"field":"tags.A17"}},
+						"a18":{"stats":{"field":"tags.A18"}},
+						"a19":{"stats":{"field":"tags.A19"}},
+						"a20":{"stats":{"field":"tags.A20"}},
+						"a21":{"stats":{"field":"tags.A21"}},
+						"a22":{"stats":{"field":"tags.A22"}},
+						"a23":{"stats":{"field":"tags.A23"}},
+						"a24":{"stats":{"field":"tags.A24"}},
+						"a25":{"stats":{"field":"tags.A25"}},
+						"a26":{"stats":{"field":"tags.A26"}},
+						"a999":{"stats":{"field":"tags.A999"}}
+						}
+        }
+      }).then(function (resp) {
+				var headCount=resp.hits.total
+				var a01=resp.aggregations.a01.count
+				var a02=resp.aggregations.a02.count
+				var a03=resp.aggregations.a03.count
+				var a04=resp.aggregations.a04.count
+				var a05=resp.aggregations.a05.count
+				var a06=resp.aggregations.a06.count
+				var a07=resp.aggregations.a07.count
+				var a08=resp.aggregations.a08.count
+				var a09=resp.aggregations.a09.count
+				var a10=resp.aggregations.a10.count
+				var a11=resp.aggregations.a11.count
+				var a12=resp.aggregations.a12.count
+				var a13=resp.aggregations.a13.count
+				var a14=resp.aggregations.a14.count
+				var a15=resp.aggregations.a15.count
+				var a16=resp.aggregations.a16.count
+				var a17=resp.aggregations.a17.count
+				var a18=resp.aggregations.a18.count
+				var a19=resp.aggregations.a19.count
+				var a20=resp.aggregations.a20.count
+				var a21=resp.aggregations.a21.count
+				var a22=resp.aggregations.a22.count
+				var a23=resp.aggregations.a23.count
+				var a24=resp.aggregations.a24.count
+				var a25=resp.aggregations.a25.count
+				var a26=resp.aggregations.a26.count
+				var a999=resp.aggregations.a999.count
+				
+				optionapp.series[0].data = [ [01,a01,a01,'工具'] ]			
+			  optionapp.series[1].data = [ [02,a02,a02,'游戏'] ]
+			  optionapp.series[2].data = [ [03,a03,a03,'图书'] ]			
+			  optionapp.series[3].data = [ [04,a04,a04,'娱乐'] ]	 
+			  optionapp.series[4].data = [ [05,a05,a05,'商务'] ]			
+			  optionapp.series[5].data = [ [06,a06,a06,'财务'] ]
+			  optionapp.series[6].data = [ [07,a07,a07,'导航'] ]			
+			  optionapp.series[7].data = [ [08,a08,a08,'健康健美'] ]
+			  optionapp.series[8].data = [ [09,a09,a09,'新闻'] ]			
+			  optionapp.series[9].data = [ [10,a10,a10,'生活'] ]
+			  optionapp.series[10].data = [ [11,a11,a11,'体育'] ]			
+			  //optionapp.series[11].data = [ [12,a12,a12,'其他'] ]
+			  optionapp.series[12].data = [ [13,a13,a13,'儿童'] ]			
+			  optionapp.series[13].data = [ [14,a14,a14,'教育'] ]	 
+			  optionapp.series[14].data = [ [15,a15,a15,'购物'] ]			
+			  optionapp.series[15].data = [ [16,a16,a16,'摄影与录像'] ]
+			  optionapp.series[16].data = [ [17,a17,a17,'效率'] ]			
+			  optionapp.series[17].data = [ [18,a18,a18,'美食佳饮'] ]
+			  optionapp.series[18].data = [ [19,a19,a19,'旅游'] ]			
+			  optionapp.series[19].data = [ [20,a20,a20,'音乐'] ]
+			  optionapp.series[20].data = [ [21,a21,a21,'社交'] ]			
+			  optionapp.series[21].data = [ [22,a22,a22,'报刊杂志'] ]
+			  optionapp.series[22].data = [ [23,a23,a23,'参考'] ]			
+			  optionapp.series[23].data = [ [24,a24,a24,'医疗'] ]	 
+			  optionapp.series[24].data = [ [25,a25,a25,'天气'] ]			
+			  optionapp.series[25].data = [ [26,a26,a26,'商品指南'] ]
+			  optionapp.series[26].data = [ [27,a999,a999,'其他'] ]			
+				
+    		 var chartapp = echarts.init(document.getElementById('chartapp')); // 重新初始化一下，就能解决圆形大小不显示的问题。
+    		chartapp.setOption(optionapp,true);  				
+        //console.log(resp)
+      }, function (err) {
+          console.trace(err.message);
+      }); 
+      
+      
+        
+    });
+    })
+  </script>
+</head>
+<body class="body_css">
+<table border="0" width="100%;">
+	<tr>
+    <td>
+    <div class="container" id='cdtions' width="100%" style=""></div>
+
+    <div align="center">
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >AND</button>&nbsp;
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >OR</button>&nbsp;
+     <!-- <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >NOT</button>&nbsp;
+     -->
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >(</button>&nbsp;
+      <button class="button cycle-button" style="background: rgb(123,114,233); color: rgb(255,255,255);" >)</button>&nbsp;&nbsp;&nbsp;&nbsp;
+      <button id='sbmt' class="button primary">提交</button>
+    </div>
+    </td>
+  </tr>
+  <tr style="border:2px solid red;">
+<td style="border:1px solid yellow;width:30px;" width="10%;"><div style="border:1px solid blue;width:200px;" id="jstree_demo_div"></div></td>
+<td style="border:1px solid green;">
+	<table>
+		<tr>
+			<td >
+    <div id="chartboth" style="width: 450px;height:400px;border:1px solid green;"></div>
+				</td>
+			<td><!-- 为 ECharts 准备一个具备大小（宽高）的Dom -->
+    <div id="chartflow" style="width: 450px;height:400px;"></div></td>
+			</tr>
+		<tr>
+			<td><div id="chartage" style="width: 600px;height:400px; float: left;"></div></td>
+			<td><div id="chartsex" style="width: 600px;height:400px; float: left;"></div></td></tr>
+		<tr><td colspan="2"><div id="chartmap" style="width: 1000px;height:529px;border:1px solid green; "></div></td></tr>
+		<tr><td colspan="2"><div id="chartapp" style="width: 1000px;height:400px; border:1px solid red; "></div></td></tr>
+		</table>
+	 
+	</td>
+</tr>
+</table>
+     
+      
+  </head>
+  
+  
+  
+  
+  <body>
+    <!-- 总人数   活跃人数 -->
+   <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartboth = echarts.init(document.getElementById('chartboth'));
+        optionboth = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series : [
+        {
+            name: '速度',
+            type: 'gauge',
+            z: 3,
+            min: 0,
+            max: 220,
+            splitNumber: 11,
+            center: ['60%', '55%'],    // 默认全局居中
+            radius: '50%',
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length: 15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0, name: '总人数'}]
+        },
+        {
+            name: '转速',
+            type: 'gauge',
+            center: ['20%', '55%'],    // 默认全局居中
+            radius: '45%',
+            min:0,
+            max:10,
+            endAngle:15,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 7
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length:12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length:20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title: {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail: {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0, name: '活跃人数'}]
+        }
+    ]
+};
+
+  chartboth.setOption(optionboth,true);
+  </script>
+
+<!-- 流量 -->
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartflow = echarts.init(document.getElementById('chartflow'));
+        optionflow = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series : [
+        {
+            name: '速度',
+            type: 'gauge',
+            z: 3,
+            min: 0,
+            max: 220,
+            splitNumber: 11,
+            radius: '50%',
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length: 15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0, name: '流量'}]
+        }
+    ]
+};
+  chartflow.setOption(optionflow,true);
+     </script>
+
+    
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartsex = echarts.init(document.getElementById('chartsex'));
+        var optionsex = {
+          title : {
+              text: '性别比例',
+              subtext: '',
+              x:'center'
+          },
+          tooltip : {
+              trigger: 'item',
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+          },
+          legend: {
+              orient: 'vertical',
+              left: 'left',
+              data: ['男','女','未知']
+          },
+          series : [
+              {
+                  name: '男女性别比例',
+                  type: 'pie',
+                  radius : '55%',
+                  center: ['50%', '60%'],
+                  data:[
+                      {value:0, name:'男'},
+                      {value:0, name:'女'},
+                      {value:0, name:'未知'}
+                  ],
+                  itemStyle: {
+                      emphasis: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                      },
+                      normal: {
+                        // 阴影的大小
+                        shadowBlur: 200,
+                        // 阴影水平方向上的偏移
+                        shadowOffsetX: 0,
+                        // 阴影垂直方向上的偏移
+                        shadowOffsetY: 0,
+                        // 阴影颜色
+                        shadowColor: 'rgba(0, 0, 0, 0.2)'
+                    }
+                  }
+              }
+          ]
+      };
+      // 使用刚指定的配置项和数据显示图表。
+      chartsex.setOption(optionsex);
+     </script>
+
+    
+     <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartage = echarts.init(document.getElementById('chartage'), 'shine');
+        var optionage = {
+           title : {
+              text: '年龄比例',
+              subtext: '',
+              x:'center'
+          },
+          tooltip: {
+              trigger: 'item',
+              formatter: "{a} <br/>{b}: {c} ({d}%)"
+          },
+          legend: {
+              orient: 'vertical',
+              x: 'left',
+              data:['[0-18)','[18-23)','[24-30)','[31-40)','[41-50)','[50 + )','未知']
+          },
+          series: [
+              {
+                  name:'年龄比例',
+                  type:'pie',
+                  radius: ['40%', '60%'],
+                  avoidLabelOverlap: false,
+                  label: {
+                      normal: {
+                          show: true,
+                          position: 'left'
+                      },
+                      emphasis: {
+                          show: true,
+                          textStyle: {
+                              fontSize: '30',
+                              fontWeight: 'bold'
+                          }
+                      }
+                  },
+                  labelLine: {
+                      normal: {
+                          show: true
+                      }
+                  },
+                  data:[
+                      {value:0, name:'[0-18)'},
+                      {value:0, name:'[18-23)'},
+                      {value:0, name:'[24-30)'},
+                      {value:0, name:'[31-40)'},
+                      {value:0, name:'[41-50)'},
+                      {value:0, name:'[50+ )'},
+                      {value:0, name:'未知'}
+                  ]
+              }
+          ]
+      };
+        
+      // 使用刚指定的配置项和数据显示图表。
+      chartage.setOption(optionage);
+     </script>
+     
+      
+    <script type="text/javascript">
+        var chartmap = echarts.init(document.getElementById('chartmap'), 'shine');
+        function randomData() {
+            return Math.round(Math.random()*1000);
+        }
+
+        var optionmap = {
+        title: {
+            text: '受众地域分布',
+            subtext: '',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            show: false,
+            data:['受众']
+        },
+        visualMap: {
+            min: 0,
+            max: 10000,
+            left: 'left',
+            top: 'bottom',
+            text: ['高','低'],           // 文本，默认为数值文本
+            calculable: true
+        },
+        toolbox: {
+            show: false,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                dataView: {readOnly: false},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [
+            {
+                name: '受众',
+                type: 'map',
+                mapType: 'china',
+                hoverAnimation: true,
+                roam: false,
+                label: {
+                    normal: {
+                        show: true
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                data:[
+                    {name: '北京',value: randomData() },
+                    {name: '天津',value: randomData() },
+                    {name: '上海',value: randomData() },
+                    {name: '重庆',value: randomData() },
+                    {name: '河北',value: randomData() },
+                    {name: '河南',value: randomData() },
+                    {name: '云南',value: randomData() },
+                    {name: '辽宁',value: randomData() },
+                    {name: '黑龙江',value: randomData() },
+                    {name: '湖南',value: randomData() },
+                    {name: '安徽',value: randomData() },
+                    {name: '山东',value: randomData() },
+                    {name: '新疆',value: randomData() },
+                    {name: '江苏',value: randomData() },  
+                    {name: '浙江',value: randomData() },
+                    {name: '江西',value: randomData() },
+                    {name: '湖北',value: randomData() },
+                    {name: '广西',value: randomData() },
+                    {name: '甘肃',value: randomData() },
+                    {name: '山西',value: randomData() },
+                    {name: '内蒙古',value: randomData() },
+                    {name: '陕西',value: randomData() },
+                    {name: '吉林',value: randomData() },
+                    {name: '福建',value: randomData() },
+                    {name: '贵州',value: randomData() },
+                    {name: '广东',value: randomData() },
+                    {name: '青海',value: randomData() },
+                    {name: '西藏',value: randomData() },
+                    {name: '四川',value: randomData() },
+                    {name: '宁夏',value: randomData() },
+                    {name: '海南',value: randomData() },
+                    {name: '台湾',value: randomData() },
+                    {name: '香港',value: randomData() },
+                    {name: '澳门',value: randomData() }
+                ]
+            },
+        {
+            name: 'iphone5',
+            type: 'map',
+            mapType: 'china',
+            label: {
+                normal: {
+                    show: true
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            data:[
+                {name: '北京',value: randomData() },
+                {name: '天津',value: randomData() },
+                {name: '上海',value: randomData() },
+                {name: '广东',value: randomData() },
+                {name: '台湾',value: randomData() },
+                {name: '香港',value: randomData() },
+                {name: '澳门',value: randomData() }
+            ]
+        }
+        ]
+        };
+      // 使用刚指定的配置项和数据显示图表。
+      chartmap.setOption(optionmap);
+     </script>
+   
+   
+   <!-- app 散点图 -->
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var chartapp = echarts.init(document.getElementById('chartapp'));
+
+var schema = [
+  //  {name: 'date', index: 0, text: '日'},
+   // {name: 'AQIindex', index: 1, text: '数量'}
+    //,
+    //{name: 'PM25', index: 2, text: 'PM2.5'}
+];
+
+
+var itemStyle = {
+    normal: {
+        opacity: 0.8,
+        shadowBlur: 10,
+        shadowOffsetX: 0,
+        shadowOffsetY: 0,
+        shadowColor: 'rgba(0, 0, 0, 0.5)'
+    }
+};
+        
+        
+        
+        
+        var optionapp = {
+    backgroundColor: '#333',
+    color: [
+        '#dd4444', '#fec42c', '#80F1BE'
+    ],
+    legend: {
+        y: 'top',
+        //data: ['A01', 'A02', 'A03','A04','A05', 'A06', 'A07','A08','A09','A10','A11', 'A12', 'A13','A14','A15', 'A16', 'A17','A18','A19','A20','A21', 'A22', 'A23','A24','A25', 'A26', 'A27'],
+        textStyle: {
+            color: '#fff',
+            fontSize: 16
+        }
+    },
+    grid: {
+        x: '10%',
+        x2: 150,
+        y: '18%',
+        y2: '10%'
+    },
+    tooltip: {
+      padding: 10,
+        backgroundColor: '#222',
+        borderColor: '#777',
+        borderWidth: 1,
+        formatter: function (obj) {
+            var value = obj.value;
+            if(obj.seriesName=='A27'){ // A27 -> A999
+            	return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                + 'A999 (' + value[3]+ ')' 
+                + '</div>'
+                + '数量：' + value[2] + '<br>';
+            }else{
+            return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                + obj.seriesName + ' (' + value[3]+ ')' 
+                + '</div>'
+                + '数量：' + value[2] + '<br>';
+              }
+        } 
+    },
+    xAxis: {
+        type: 'value',
+        name: '类别',
+        nameGap: 16,
+        nameTextStyle: {
+            color: '#fff',
+            fontSize: 14
+        },
+        max: 27,
+        min: 0,
+        splitNumber: 20,
+        splitLine: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#777'
+            }
+        },
+        axisTick: {
+            lineStyle: {
+                color: '#777'
+            }
+        },
+        axisLabel: {
+            formatter: '{value}',
+            textStyle: {
+                color: '#fff'
+            }
+        }
+    },
+    yAxis: {
+        type: 'value',
+        name: '数量',
+        nameLocation: 'end',
+        nameGap: 20,
+        nameTextStyle: {
+            color: '#fff',
+            fontSize: 16
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#777'
+            }
+        },
+        axisTick: {
+            lineStyle: {
+                color: '#777'
+            }
+        },
+        splitLine: {
+            show: false
+        },
+        axisLabel: {
+            textStyle: {
+                color: '#fff'
+            }
+        }
+    },
+    visualMap: [
+        {
+            left: 'right',
+            top: '10%',
+            dimension: 2,
+            min: 0,
+            max: 20000,
+            itemWidth: 30,
+            itemHeight: 120,
+            calculable: true,
+            precision: 0.1,
+            text: ['圆形大小：数量'],
+            textGap: 30,
+            textStyle: {
+                color: '#fff'
+            },
+            inRange: {
+                symbolSize: [10, 70]
+            },
+            outOfRange: {
+                symbolSize: [10, 70],
+                color: ['rgba(255,255,255,.2)']
+            },
+            controller: {
+                inRange: {
+                    color: ['#c23531']
+                },
+                outOfRange: {
+                    color: ['#444']
+                }
+            }
+        }], 
+    series: [
+        {
+            name: 'A01',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A02',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A03',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A04',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A05',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A06',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A07',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A08',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A09',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A10',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A11',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        }
+        ,
+        {
+            name: 'A12',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        }
+        ,{
+            name: 'A03',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A14',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A15',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A16',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A17',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A18',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A19',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A20',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A21',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A22',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A23',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A24',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A25',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },
+        {
+            name: 'A26',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        },{
+            name: 'A27',
+            type: 'scatter',
+            itemStyle: itemStyle,
+        }
+    ]
+};
+      // 使用刚指定的配置项和数据显示图表。
+      chartapp.setOption(optionapp);
+     </script>
+  
+  </body>
+</html>
